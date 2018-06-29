@@ -27,10 +27,15 @@ guessBtn.addEventListener('click', function(){
     }
 
     if(guess === winningNumber){
-        guessInput.disabled = true;
-        showMessage(`HURRAY! ${guess} is the winning number. Congratulations!`, 'green');
+        gameOver(true, `${guess} is the answer. YOU WIN!`);
     }else{
+        guessesLeft -= 1;
 
+        if(guessesLeft === 0){
+            gameOver(false, `Game over. You lost. The correct number was ${winningNumber}.`);
+        }else{
+            showMessage(`${guess} is not correct. You have ${guessesLeft} guesses left.`, 'red');
+        }
     }
 });
 
@@ -44,3 +49,13 @@ guessInput.addEventListener('focus', function(){
     guessInput.style.borderColor = 'black';
     message.textContent = '';
 })
+
+function gameOver(won, msg){
+    let color;
+
+    won === true ? color = 'green' : color = 'red'; 
+    guessInput.disabled = true;
+    guessInput.style.borderColor = color;
+    message.style.color = color;
+    showMessage(msg);
+}
