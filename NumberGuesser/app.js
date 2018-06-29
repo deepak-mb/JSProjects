@@ -1,0 +1,46 @@
+/*
+GAME FUNCTION:
+- Player must guess a number between a min and max
+- Player gets a certain amount of guesses
+- Notify player of guesses remaining
+- Notify the player of the correct answer if loose
+- Let player choose to play again
+*/
+
+let min = 1,
+    max = 10,
+    winningNumber = 2,
+    guessesLeft = 3; 
+
+const game = document.querySelector('#game');
+const guessInput = document.querySelector('#guess-input');
+const guessBtn = document.querySelector('#guess-btn');
+const minNum = document.querySelector('min-num');
+const maxNum = document.querySelector('max-num');
+const message = document.querySelector('.message');
+
+guessBtn.addEventListener('click', function(){
+    const guess = parseInt(guessInput.value);
+
+    if(isNaN(guess) || guess < min || guess > max){
+        showMessage(`Please enter a number between ${min} and ${max}`, 'red');
+    }
+
+    if(guess === winningNumber){
+        guessInput.disabled = true;
+        showMessage(`HURRAY! ${guess} is the winning number. Congratulations!`, 'green');
+    }else{
+
+    }
+});
+
+function showMessage(msg, color){
+    message.textContent = msg;
+    guessInput.style.borderColor = color;
+    message.style.color = color;
+}
+
+guessInput.addEventListener('focus', function(){
+    guessInput.style.borderColor = 'black';
+    message.textContent = '';
+})
