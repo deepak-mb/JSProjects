@@ -1,9 +1,9 @@
-const http = new easyHTTP;
+const http = new easyHTTP();
 
-http.get("https://jsonplaceholder.typicode.com/posts", function (err, posts) {
-    if (err) {
+let posts = http.get("https://jsonplaceholder.typicode.com/posts", function(err, posts){
+    if(err){
         console.log(err);
-    } else {
+    }else{
         console.log(posts);
     }
 });
