@@ -1,10 +1,10 @@
 class UI {
-    constructor() {
-        this.profile = document.getElementById('profile');
-    }
+  constructor() {
+    this.profile = document.getElementById('profile');
+  }
 
-    showProfile(user) {
-        this.profile.innerHTML = `
+  showProfile(user) {
+    this.profile.innerHTML = `
         <div class="card card-body mb-3">
           <div class="row">
             <div class="col-md-3">
@@ -29,5 +29,30 @@ class UI {
         <h3 class="page-heading mb-3">Latest Repos</h3>
         <div id="repos"></div>
       `;
+  }
+
+  showAlert(message, classname) {
+    this.clearAlert();
+    const div = document.createElement('div');
+    div.className = classname;
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector('.searchContainer');
+    const search = document.querySelector('.search');
+    container.insertBefore(div, search);
+
+    setTimeout(() => {
+      this.clearAlert();
+    }, 2000);
+  }
+
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+    if (currentAlert) {
+      currentAlert.remove();
     }
+  }
+
+  clearProfile() {
+    this.profile.innerHTML = '';
+  }
 }
