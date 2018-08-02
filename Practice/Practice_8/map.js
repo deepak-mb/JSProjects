@@ -9,10 +9,10 @@ map1.set(location, 'Bangalore');
 
 // console.log(map1.get(location));
 
-for(let key of map1.keys()){
+for (let key of map1.keys()) {
     console.log(key);
 }
-for(let val of map1.values()){
+for (let val of map1.values()) {
     console.log(val);
 }
 
