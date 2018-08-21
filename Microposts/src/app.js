@@ -1,10 +1,6 @@
-const greeting = 'Hello World';
+import greeting, { text as data, testFunction as testName } from "./myModule1";
+
+console.log(data);
 console.log(greeting);
 
-const getData = async (url) => {
-  const response = await fetch(url);
-  const result = await response.json();
-  console.log(result);
-};
-
-getData('https://jsonplaceholder.typicode.com/posts');
+console.log(testName());
